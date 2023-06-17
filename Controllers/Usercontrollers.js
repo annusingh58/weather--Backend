@@ -33,3 +33,51 @@ export const register =async(req,res)=>{
 }
 
 
+export const getTemperature= async(req,res)=>{
+    try{
+        const{city} =req.body;
+        if(!city) return res.send("CIty is required");
+        const keyForWheather ="4fc1e0633cd29e2e368a057e71cf382c";
+        const response =await axios.post(`http://api.weatherstack.com/forecast?access_key=${keyForWheather}&query=${city}`);
+
+        console.log(response.data,"response")
+        res.send(response.data.current.temperature.toString());
+    }
+    catch(error){
+        return res.send(error);
+    }
+}
+
+
+export const windspeed= async(req,res)=>{
+    try{
+        const{city} =req.body;
+        if(!city) return res.send("CIty is required");
+        const keyForWheather ="4fc1e0633cd29e2e368a057e71cf382c";
+        const response =await axios.post(`http://api.weatherstack.com/forecast?access_key=${keyForWheather}&query=${city}`);
+
+        console.log(response.data,"response")
+        res.send(response.data.current.wind_speed.toString())
+    }
+    catch(error){
+        return res.send(error);
+    }
+}
+
+
+    export const astro= async(req,res)=>{
+        try{
+            const{city} =req.body;
+            if(!city) return res.send("CIty is required");
+            const keyForWheather ="4fc1e0633cd29e2e368a057e71cf382c";
+            const response =await axios.post(`http://api.weatherstack.com/forecast?access_key=${keyForWheather}&query=${city}`);
+
+            const data=response.data.forecast['2023-06-16'].astro;
+            console.log(response,"response")
+            res.send(data)
+        }
+        catch(error){
+            return res.send(error);
+        }   
+    } 
+

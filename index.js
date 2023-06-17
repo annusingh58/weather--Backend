@@ -14,7 +14,7 @@ app.use('/api/v7',router);
 mongoose.connect('mongodb+srv://annusingh:anusingh58@cluster0.md93vry.mongodb.net/weather')
 
 .then(()=>console.log("db connected"))
-.catch((error)=>console.log("db error=>",err))
+.catch((error)=>console.log("db error=>",error))
 
 
-app.listen(7000,()=>console.log("working on port 7000"))
+app.listen(5001,()=>console.log("working on port 7000"))
